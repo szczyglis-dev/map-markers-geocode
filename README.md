@@ -10,7 +10,7 @@ Javascript code examples showing how to use markers and geocoding on map APIs us
 
 `open_street_map.html` - shows map marker placement and coordinate search with geocoding using Open Street Map
 
-Remember to use your API key in the Google Maps example, which should be entered at the bottom of the page in place of *{YOUR_API_KEY}*:
+Remember to define your API key in the Google Maps example, which should be entered at the bottom of the page in place of *{YOUR_API_KEY}*:
 
 ```js
 <script src="https://maps.googleapis.com/maps/api/js?key={YOUR_API_KEY}&callback=initMap&v=weekly" async></script>
