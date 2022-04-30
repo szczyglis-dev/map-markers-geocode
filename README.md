@@ -1,4 +1,4 @@
-**Javascript** | current release: **1.0.6** build 2022-04-30
+**Javascript** | current release: **1.0.7** build 2022-04-30
 
 # Map Markers Geocode
 
@@ -265,7 +265,7 @@ $(document).ready(function () {
 ___
 
 # Changelog
-**- 1.0.6** - Published first release. (2022-04-30)
+**- 1.0.7** - Published first release. (2022-04-30)
 
 # Credits
  
