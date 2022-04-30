@@ -22,9 +22,9 @@ You can also see the live examples in action in the online demo at:
 
 **INFO: The Google Maps online demo uses a developer API key with geocoding turned off.**
 
-![map1](https://user-images.githubusercontent.com/61396542/166083596-77a142e9-e408-420c-9e37-1a5aa0edf6ac.png)
+![m1](https://user-images.githubusercontent.com/61396542/166086106-bcd24544-68ac-4e0b-8729-9c188af77ffa.png)
 
-![map2](https://user-images.githubusercontent.com/61396542/166083603-cc374586-297b-4149-83e8-5c452da9c66a.png)
+![m2](https://user-images.githubusercontent.com/61396542/166086118-c1b33f7d-d8a0-4465-9b81-5b4f0e8d7a24.png)
 
 # Tutorial: how to use maps API's?
 
