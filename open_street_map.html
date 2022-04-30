@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pl">
+    <head>
+        <title>Map Markers & Geocode Example - Open Street Map</title>   
+        <meta charset="utf-8"/>         
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <style>.github-corner{top: 0;right: 0}.github-corner:hover .octo-arm{animation: octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%{transform: rotate(0deg)}20%{transform: rotate(-25deg)}40%{transform: rotate(10deg)}60%{transform: rotate(-25deg)}80%{transform: rotate(10deg)}100%{transform: rotate(0deg)}}@media (max-width: 500px){.github-corner:hover .octo-arm{animation: none}.github-corner .octo-arm{animation: octocat-wave 560ms ease-in-out}.github-link{font-size:0.8rem}} </style>
+        <link rel="stylesheet" href="css/leaflet.css"/>
+        <script src="js/leaflet.js"></script>
+    </head>
+
+    <body>
+    	<a target="_blank" href="https://github.com/szczyglis-dev/map-markers-geocode" class="github-corner" aria-label="View GitHub page">
+            <svg width="80" height="80" viewBox="0 0 250 250"
+                 style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+                <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+                      fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+                <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                      fill="currentColor" class="octo-body"></path>
+            </svg>
+        </a>
+    	<div class="container p-2 mt-4">
+	    	<h1>Map Markers & Geocode Example - Open Street Map</h1>
+	    	<b>Code example showing how to create your own markers on a map and search for location coordinates using the Open Street Map engine.</b>
+	    	<form id="form">
+	    		<div class="form-row mt-3">
+				    <div class="form-group col-md-8">
+				      <input name="search_query" type="text" id="query" placeholder="Type location to search, eg. Chicago, USA" class="form-control"/>	
+				    </div>
+				    <div class="form-group col-md-4">
+				      <button type="submit" id="search" class="btn btn-primary">Search</button>		      
+				    </div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+				      <label for="lat">Latitude</label>
+				      <input type="text" name="lat" id="lat" placeholder="Latitude" class="form-control" value="40.7127753"/>
+				    </div>
+				    <div class="form-group col-md-6">
+				      <label for="lng">Longitude</label>
+				      <input type="text" name="lng" id="lng" placeholder="Longitude" class="form-control" value="-74.0059728"/>
+				    </div>
+				</div>    		
+	    	</form>
+
+	        <div id="map" style="width:100%;height:500px"></div>
+	        <div class="my-5 text-center">
+	        	<b>Also check:</b> <a href="google_maps.html">Google Maps Example</a>
+	        </div>
+	        <div class="text-center mt-4 text-muted">
+	        	<small>
+	        	© 2022 | MIT License | Example code by Marcin "szczyglis" Szczyglinski<br/>
+	        	<a href="https://github.com/szczyglis-dev/map-markers-geocode" target="_blank">https://github.com/szczyglis-dev/map-markers-geocode</a> | <a href="https://szczyglis.dev" target="_blank">https://szczyglis.dev</a>
+		        </small>
+		    </div>
+
+	        <script src="js/jquery.min.js"></script>
+	        <script src="js/bootstrap.bundle.min.js"></script>
+	        <script>
+	        	let map, 
+	        		marker;
+
+				function geocode(query) {
+				    $.ajax({
+				        url: 'https://nominatim.openstreetmap.org/search/'+query+'?format=json',
+				        dataType: 'json',
+				        method: 'GET'
+				    })
+			        .done(function (data) {
+			            if (typeof data[0]['lat'] !== 'undefined' && typeof data[0]['lon'] !== 'undefined') {
+			            	const lat = data[0]['lat'];
+			            	const lng = data[0]['lon'];
+							$('input[name="lat"]').val(lat);
+							$('input[name="lng"]').val(lng);
+							setPoint(lat, lng);
+							console.log('Geocode result', lat, lng);
+			            }
+			        })
+			        .fail(function (err) {
+			            console.error(err);
+			        });
+				};
+
+				// Click on map
+				function onMapClick(e) {
+					const lat = e.latlng.lat;
+			        const lng = e.latlng.lng;
+				    marker.setLatLng(e.latlng);
+				    marker.setPopupContent(lat + "," + lng).openPopup();
+				    $('input[name="lat"]').val(lat);
+					$('input[name="lng"]').val(lng);
+					console.log('On map click', lat, lng);
+				}
+
+				// Marker drag end
+				function onDragEnd(e) {
+					const lat = e.target._latlng.lat;
+			        const lng = e.target._latlng.lng;
+				    marker.setLatLng(e.target._latlng);
+				    $('input[name="lat"]').val(lat);
+					$('input[name="lng"]').val(lng);
+					console.log('On marker drag end', lat, lng);
+				}
+
+				// Sets marker position
+				function setPoint(lat, lng) {
+				    marker.setLatLng(L.latLng(lat, lng));
+				    map.setView([lat, lng], 12);
+				}
+
+				// Updates marker position on map
+				function updateMarker() {
+				    const lat = $('input[name="lat"]').val().trim();
+				    const lng = $('input[name="lng"]').val().trim();
+				    if (lat.length != 0 && lng.length != 0) {
+				    	setPoint(lat, lng);
+				    	// map.setView([lat, lng], 12); // < --- uncomment if you want to center map in this place
+				        console.log('Update marker position', lat, lng);
+				    }
+				};
+
+				map = L.map('map');
+				marker = L.marker([40.7127753, -74.0059728], {
+					draggable:'false'
+				});
+				marker.on('dragend', onDragEnd);
+				marker.bindPopup('0,0');
+				marker.addTo(map);
+				marker.setPopupContent('40.7127753,-74.0059728');
+
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', { 
+				    foo: 'bar',
+				    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' 
+				}).addTo(map),
+				setPoint(40.7127753, -74.0059728);
+				map.setZoom(6);
+				map.on('click', onMapClick);
+
+				$(document).ready(function() {
+					// Refresh marker position when manual latitude update
+				    $('body').on('change', 'input[name="lat"]', function(e) {
+				        updateMarker();
+				    });
+
+				    // Refresh marker position when manual longitude update
+				    $('body').on('change', 'input[name="lng"]', function(e) {
+				        updateMarker();
+				    });
+
+				    // Run geocode search on form submit
+				    $('body').on('submit', 'form[name="form"]', function (e) {
+				        e.preventDefault();
+				        const query = $('input[name="search_query"]').val();
+				        if (query != '') {
+				            geocode(query);
+				        }
+				    });
+
+				    // Run geocode search on click search button
+				    $('body').on('click', 'button[id="search"]', function(e) {
+				    	e.preventDefault();
+				        const query = $('input[name="search_query"]').val();
+				        if (query != '') {
+				            geocode(query);
+				        }
+				    });
+				});
+			</script>	
+	    </div>
+    </body>
+</html> 
