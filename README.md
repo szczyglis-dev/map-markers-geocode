@@ -26,7 +26,7 @@ You can also see the live examples in action in the online demo at:
 
 ![m2](https://user-images.githubusercontent.com/61396542/166086118-c1b33f7d-d8a0-4465-9b81-5b4f0e8d7a24.png)
 
-# Tutorial: how to use maps API's?
+# Tutorial: how to use maps APIs?
 
 ## Google Maps / Javascript
 **The example shows how to place the draggable marker on the map, read the coordinates from its position, and how to use geocoding to find the coordinates of the place you are looking for, and then update the marker position with the coordinates found.**
