@@ -6,9 +6,9 @@ Javascript code examples showing how to use markers and geocoding on map APIs us
 
 **The repository contains working code examples in 2 files:**
 
-`google_maps.html` - shows you placing markers on the map and searching for coordinates using geocoding on Google Map
+`google_maps.html` - code example that shows map marker placement and coordinate search using geocoding using Google Maps
 
-`open_street_map.html` - shows you placing markers on the map and searching for coordinates using geocoding on Open Street Map
+`open_street_map.html` - code example that shows map marker placement and coordinate search using geocoding using Open Street Map
 
 Remember to use your API key in the Google Maps example, which should be entered at the bottom of the page in place of *{YOUR_API_KEY}*:
 
