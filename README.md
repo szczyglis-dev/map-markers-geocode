@@ -2,7 +2,7 @@
 
 # Map Markers Geocode
 
-JavaScript code examples showing how to use markers and geocoding on map APIs using two different engines: **Google Maps** and **Open Street Map** (using the **Leaflet** library - https://leafletjs.com). The examples contain all the necessary libraries and are commented out. The sample code can be used as a tutorial and training material when implementing your own solutions based on Google Maps or Open Street Map.
+JavaScript code examples showing how to use markers and geocoding on map APIs using two different engines: **Google Maps** and **Open Street Map** (using the Leaflet library - https://leafletjs.com). The examples contain all the necessary libraries and are commented out. The sample code can be used as a tutorial and training material when implementing your own solutions based on Google Maps or Open Street Map.
 
 **The repository contains working code examples in 2 files:**
 
@@ -10,7 +10,7 @@ JavaScript code examples showing how to use markers and geocoding on map APIs us
 
 `open_street_map.html` - showing the operation of markers and coordinate search using geocoding in Open Street Map
 
-Remember to use your API key in the Google Maps example, which should be entered at the bottom of the page in place of **{YOUR_API_KEY}**:
+Remember to use your API key in the Google Maps example, which should be entered at the bottom of the page in place of *{YOUR_API_KEY}*:
 
 ```js
 <script src = "https://maps.googleapis.com/maps/api/js?key={YOUR_API_KEY}&callback=initMap&v=weekly" async></script>
