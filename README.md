@@ -1,6 +1,6 @@
-**Javascript** | current release: **1.0.7** build 2022-04-30
+**Javascript** | current release: **1.0.8** build 2022-04-30
 
-# Map Markers Geocode
+# Map Markers & Geocode
 
 Javascript code examples showing how to use markers and geocoding on map APIs using two different engines: **Google Maps** and **Open Street Map** (using the Leaflet library - https://leafletjs.com). The examples contain all the necessary libraries and have comments. The sample code can be used as a tutorial and training material when implementing your own solutions based on Google Maps or Open Street Map.
 
@@ -265,7 +265,7 @@ $(document).ready(function () {
 ___
 
 # Changelog
-**- 1.0.7** - Published first release. (2022-04-30)
+**- 1.0.8** - Published first release. (2022-04-30)
 
 # Credits
  
