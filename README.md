@@ -219,7 +219,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {
     foo: 'bar',
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map),
-    setPoint(40.7127753, -74.0059728);
+setPoint(40.7127753, -74.0059728);
 map.setZoom(6);
 map.on('click', onMapClick);
 
