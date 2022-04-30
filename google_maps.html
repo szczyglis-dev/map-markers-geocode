@@ -103,7 +103,7 @@
                 console.log('On marker drag end', lat, lng);
             });
 
-            // Add click listener to marker
+            // Add click listener to map
             google.maps.event.addListener(map, 'click', function (event) {
                 marker.setPosition(event.latLng);
                 $('input[name="lat"]').val(event.latLng.lat());

@@ -66,6 +66,7 @@
         let map,
             marker;
 
+        // Runs geocode search    
         function geocode(query) {
             $.ajax({
                 url: 'https://nominatim.openstreetmap.org/search/' + query + '?format=json',
@@ -87,7 +88,7 @@
                 });
         };
 
-        // Click on map
+        // Click on map event handler
         function onMapClick(e) {
             const lat = e.latlng.lat;
             const lng = e.latlng.lng;
@@ -98,7 +99,7 @@
             console.log('On map click', lat, lng);
         }
 
-        // Marker drag end
+        // Marker dragend event handler
         function onDragEnd(e) {
             const lat = e.target._latlng.lat;
             const lng = e.target._latlng.lng;
