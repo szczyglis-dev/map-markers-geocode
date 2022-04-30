@@ -162,15 +162,6 @@
                     geocode({address: query});
                 }
             });
-
-            // Run geocode search on click search button
-            $('body').on('click', 'button[id="search"]', function (e) {
-                e.preventDefault();
-                const query = $('input[name="search_query"]').val();
-                if (query != '') {
-                    geocode({address: query});
-                }
-            });
         });
     </script>
 
