@@ -1,4 +1,4 @@
-**Javascript** | current release: **1.0.9** build 2022-04-30
+**Javascript** | current release: **1.0.10** build 2022-04-30
 
 # Map Markers & Geocode
 
@@ -134,15 +134,6 @@ $(document).ready(function () {
             geocode({address: query});
         }
     });
-
-    // Run geocode search on click search button
-    $('body').on('click', 'button[id="search"]', function (e) {
-        e.preventDefault();
-        const query = $('input[name="search_query"]').val();
-        if (query != '') {
-            geocode({address: query});
-        }
-    });
 });
 ```
 
@@ -251,21 +242,12 @@ $(document).ready(function () {
             geocode(query);
         }
     });
-
-    // Run geocode search on click search button
-    $('body').on('click', 'button[id="search"]', function (e) {
-        e.preventDefault();
-        const query = $('input[name="search_query"]').val();
-        if (query != '') {
-            geocode(query);
-        }
-    });
 });
 ```
 ___
 
 # Changelog
-**- 1.0.9** - Published first release. (2022-04-30)
+**- 1.0.10** - Published first release. (2022-04-30)
 
 # Credits
  
