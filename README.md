@@ -47,11 +47,11 @@ function initMap() {
     geocoder = new google.maps.Geocoder();
 
     // Define map initial parameters
-    const myLatlng = new google.maps.LatLng(40.7127753,-74.0059728); // New York				    
+    const myLatlng = new google.maps.LatLng(40.7127753, -74.0059728); // New York
     const mapOptions = {
-      zoom: 6,
-      center: myLatlng,
-      mapTypeId: 'hybrid'
+        zoom: 6,
+        center: myLatlng,
+        mapTypeId: 'hybrid'
     }
 
     // Create map in "map" div
@@ -61,8 +61,8 @@ function initMap() {
     marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
-        draggable:true,
-        title:"Drag marker"
+        draggable: true,
+        title: "Drag marker"
     });
 
     // Add dragend listener to marker
@@ -73,10 +73,10 @@ function initMap() {
         $('input[name="lat"]').val(lat);
         $('input[name="lng"]').val(lng);
         console.log('On marker drag end', lat, lng);
-      });
+    });
 
-    // Add click listener to marker
-    google.maps.event.addListener(map, 'click', function(event) {
+    // Add click listener to map
+    google.maps.event.addListener(map, 'click', function (event) {
         marker.setPosition(event.latLng);
         $('input[name="lat"]').val(event.latLng.lat());
         $('input[name="lng"]').val(event.latLng.lng());
@@ -86,21 +86,21 @@ function initMap() {
 
 // Executes geocode search
 function geocode(request) {
-  geocoder
-    .geocode(request)
-    .then((result) => {
-      const { results } = result;
-      map.setCenter(results[0].geometry.location);
-      map.setZoom(10);
-      marker.setPosition(results[0].geometry.location);
-      $('input[name="lat"]').val(results[0].geometry.location.lat);
-      $('input[name="lng"]').val(results[0].geometry.location.lng);
-      console.log('Geocode result', results);
-      return results;
-    })
-    .catch((e) => {
-      alert("Geocode error: " + e);
-    });
+    geocoder
+        .geocode(request)
+        .then((result) => {
+            const {results} = result;
+            map.setCenter(results[0].geometry.location);
+            map.setZoom(10);
+            marker.setPosition(results[0].geometry.location);
+            $('input[name="lat"]').val(results[0].geometry.location.lat);
+            $('input[name="lng"]').val(results[0].geometry.location.lng);
+            console.log('Geocode result', results);
+            return results;
+        })
+        .catch((e) => {
+            alert("Geocode error: " + e);
+        });
 };
 
 // Updates marker position on map
@@ -115,14 +115,14 @@ function updateMarker() {
     }
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Refresh marker position when manual latitude update
-    $('body').on('change', 'input[name="lat"]', function(e) {
+    $('body').on('change', 'input[name="lat"]', function (e) {
         updateMarker();
     });
 
     // Refresh marker position when manual longitude update
-    $('body').on('change', 'input[name="lng"]', function(e) {
+    $('body').on('change', 'input[name="lng"]', function (e) {
         updateMarker();
     });
 
@@ -131,16 +131,16 @@ $(document).ready(function() {
         e.preventDefault();
         const query = $('input[name="search_query"]').val();
         if (query != '') {
-            geocode({ address: query });
+            geocode({address: query});
         }
     });
 
     // Run geocode search on click search button
-    $('body').on('click', 'button[id="search"]', function(e) {
-      e.preventDefault();
+    $('body').on('click', 'button[id="search"]', function (e) {
+        e.preventDefault();
         const query = $('input[name="search_query"]').val();
         if (query != '') {
-            geocode({ address: query });
+            geocode({address: query});
         }
     });
 });
@@ -152,31 +152,32 @@ $(document).ready(function() {
 For the full working example, including the form, libraries, and browser-working code, see the file `open_street_map.html` in the repository.
 
 ```js
-let map, 
+let map,
     marker;
 
+// Runs geocode search    
 function geocode(query) {
     $.ajax({
-        url: 'https://nominatim.openstreetmap.org/search/'+query+'?format=json',
+        url: 'https://nominatim.openstreetmap.org/search/' + query + '?format=json',
         dataType: 'json',
         method: 'GET'
     })
-      .done(function (data) {
-          if (typeof data[0]['lat'] !== 'undefined' && typeof data[0]['lon'] !== 'undefined') {
-            const lat = data[0]['lat'];
-            const lng = data[0]['lon'];
-            $('input[name="lat"]').val(lat);
-            $('input[name="lng"]').val(lng);
-            setPoint(lat, lng);
-            console.log('Geocode result', lat, lng);
-          }
-      })
-      .fail(function (err) {
-          console.error(err);
-      });
+        .done(function (data) {
+            if (typeof data[0]['lat'] !== 'undefined' && typeof data[0]['lon'] !== 'undefined') {
+                const lat = data[0]['lat'];
+                const lng = data[0]['lon'];
+                $('input[name="lat"]').val(lat);
+                $('input[name="lng"]').val(lng);
+                setPoint(lat, lng);
+                console.log('Geocode result', lat, lng);
+            }
+        })
+        .fail(function (err) {
+            console.error(err);
+        });
 };
 
-// Click on map
+// Click on map event handler
 function onMapClick(e) {
     const lat = e.latlng.lat;
     const lng = e.latlng.lng;
@@ -187,7 +188,7 @@ function onMapClick(e) {
     console.log('On map click', lat, lng);
 }
 
-// Marker drag end
+// Marker dragend event handler
 function onDragEnd(e) {
     const lat = e.target._latlng.lat;
     const lng = e.target._latlng.lng;
@@ -208,37 +209,37 @@ function updateMarker() {
     const lat = $('input[name="lat"]').val().trim();
     const lng = $('input[name="lng"]').val().trim();
     if (lat.length != 0 && lng.length != 0) {
-      setPoint(lat, lng);
-      // map.setView([lat, lng], 12); // < --- uncomment if you want to center map in this place
+        setPoint(lat, lng);
+        // map.setView([lat, lng], 12); // < --- uncomment if you want to center map in this place
         console.log('Update marker position', lat, lng);
     }
 };
 
 map = L.map('map');
 marker = L.marker([40.7127753, -74.0059728], {
-  draggable:'false'
+    draggable: 'false'
 });
 marker.on('dragend', onDragEnd);
 marker.bindPopup('0,0');
 marker.addTo(map);
 marker.setPopupContent('40.7127753,-74.0059728');
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', { 
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {
     foo: 'bar',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' 
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map),
-setPoint(40.7127753, -74.0059728);
+    setPoint(40.7127753, -74.0059728);
 map.setZoom(6);
 map.on('click', onMapClick);
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Refresh marker position when manual latitude update
-    $('body').on('change', 'input[name="lat"]', function(e) {
+    $('body').on('change', 'input[name="lat"]', function (e) {
         updateMarker();
     });
 
     // Refresh marker position when manual longitude update
-    $('body').on('change', 'input[name="lng"]', function(e) {
+    $('body').on('change', 'input[name="lng"]', function (e) {
         updateMarker();
     });
 
@@ -252,8 +253,8 @@ $(document).ready(function() {
     });
 
     // Run geocode search on click search button
-    $('body').on('click', 'button[id="search"]', function(e) {
-      e.preventDefault();
+    $('body').on('click', 'button[id="search"]', function (e) {
+        e.preventDefault();
         const query = $('input[name="search_query"]').val();
         if (query != '') {
             geocode(query);
