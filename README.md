@@ -249,15 +249,10 @@ ___
 # Changelog
 **- 1.0.11** - Published first release. (2022-04-30)
 
-# Credits
- 
-### Published examples are free to use but if you liked then you can donate this work via BTC: 
+--- 
+**Published examples are free to use, but if you like it, you can support my work by buying me a coffee ;)**
 
-**14X6zSCbkU5wojcXZMgT9a4EnJNcieTrcr**
-
-or by PayPal:
- **[https://www.paypal.me/szczyglinski](https://www.paypal.me/szczyglinski)**
-
+https://www.buymeacoffee.com/szczyglis
 
 **Enjoy!**
 
