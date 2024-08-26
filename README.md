@@ -1,26 +1,27 @@
-**Javascript** | current release: **1.0.11** build 2022-04-30
+Release: **1.0.12** | build: **2024.08.26** | **Javascript**
 
 # Map Markers & Geocode
 
-Javascript code examples showing how to use markers and geocoding on map APIs using two different engines: **Google Maps** and **Open Street Map** (using the Leaflet library - https://leafletjs.com). The examples contain all the necessary libraries and have comments. The sample code can be used as a tutorial and training material when implementing your own solutions based on Google Maps or Open Street Map.
+Javascript code examples illustrating how to use markers and geocoding on map APIs with two different engines: **Google Maps** and **OpenStreetMap** (using the Leaflet library - https://leafletjs.com). The examples include all the necessary libraries and are well-commented. The sample code can be utilized as a tutorial and training material for implementing your own solutions based on Google Maps or OpenStreetMap.
 
 **The repository contains working code examples in 2 files:**
 
-`google_maps.html` - shows map marker placement and coordinate search with geocoding using Google Maps
+- `google_maps.html` - Demonstrates map marker placement and coordinate search with geocoding using Google Maps.
+- `open_street_map.html` - Demonstrates map marker placement and coordinate search with geocoding using OpenStreetMap.
 
-`open_street_map.html` - shows map marker placement and coordinate search with geocoding using Open Street Map
-
-Remember to define your API key in the Google Maps example, which should be entered at the bottom of the page in place of *{YOUR_API_KEY}*:
+Remember to define your API key in the Google Maps example, which should be inserted at the bottom of the page in place of **{YOUR_API_KEY}**:
 
 ```js
 <script src="https://maps.googleapis.com/maps/api/js?key={YOUR_API_KEY}&callback=initMap&v=weekly" async></script>
 ```
 
-# Online example:
+# Online example
+
 You can also see the live examples in action in the online demo at:
+
 ### https://szczyglis.dev/map-markers-geocode
 
-**INFO: The Google Maps online demo uses a developer API key with geocoding turned off.**
+**INFO: The Google Maps online demo uses a developer API key with geocoding disabled.**
 
 ![m1](https://user-images.githubusercontent.com/61396542/166086106-bcd24544-68ac-4e0b-8729-9c188af77ffa.png)
 
@@ -29,9 +30,10 @@ You can also see the live examples in action in the online demo at:
 # Tutorial: how to use maps APIs?
 
 ## Google Maps / Javascript
-**The example shows how to place the draggable marker on the map, read the coordinates from its position, and how to use geocoding to find the coordinates of the place you are looking for, and then update the marker position with the coordinates found.**
 
-For the full working example, including the form, libraries, and browser-working code, see the file `google_maps.html` in the repository.
+**The example demonstrates how to place a draggable marker on the map, read the coordinates from its position, and use geocoding to find the coordinates of a specified location, then update the marker's position with the found coordinates.**
+
+For the complete working example, including the form, libraries, and browser-ready code, see the file `google_maps.html` in the repository.
 
 ```js
 let map,
@@ -138,9 +140,10 @@ $(document).ready(function () {
 ```
 
 ## Open Street Map / Javascript
-**The example shows how to place the draggable marker on the map, read the coordinates from its position, and how to use geocoding to find the coordinates of the place you are looking for, and then update the marker position with the coordinates found.**
 
-For the full working example, including the form, libraries, and browser-working code, see the file `open_street_map.html` in the repository.
+**The example demonstrates how to place a draggable marker on the map, read the coordinates from its position, and use geocoding to find the coordinates of a specified location, then update the marker's position with the found coordinates.**
+
+For the complete working example, including the form, libraries, and browser-ready code, see the file `open_street_map.html` in the repository.
 
 ```js
 let map,
@@ -246,8 +249,11 @@ $(document).ready(function () {
 ```
 ___
 
-# Changelog
-**- 1.0.11** - Published first release. (2022-04-30)
+## Changelog
+
+**1.0.11** - Published first release. (2022-04-30)
+
+**1.0.12** - Updated docs. (2024-08-26)
 
 --- 
 **Published examples are free to use, but if you like it, you can support my work by buying me a coffee ;)**
